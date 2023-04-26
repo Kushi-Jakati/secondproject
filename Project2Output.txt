@@ -1,0 +1,42 @@
+Let us create a rational number and do things with it!
+Enter a numerator: 
+1
+Enter a denominator (CANNOT BE 0): 
+4
+Here is our created rational object: 1/4
+
+Negating the rational number 1/4...
+Please enter your expected numerator for negation: 
+-1
+Please enter your expected denominator for negation: 
+4
+Expected Negated Rational Number: -1/4
+Negated Rational Number calculated from the system: -1/4
+
+Inverting the rational number -1/4...
+Input: -1/4
+Please enter your expected numerator:
+4
+Please enter your expected denominator: 
+-1
+Expected Invert: -4/1
+Invert calculated from the system: -4/1
+
+Converting the rational number -4/1 to a double...
+Input: -4/1
+Please enter your expected double:
+-4
+Expected Double: -4.0
+Double calculated from the system:
+-4.0
+
+Calculating the sum of rational numbers (your rational number and a randomly generated one)...
+Input 1: -4/1
+Input 2 (random): 77/74
+Please enter your expected numerator: 
+-219
+Please enter your expected denominator: 
+74
+Expected Sum: -219/74
+The sum of 77/74 and -4/1 from our program is -219/74.
+TLDR Sum (if denominator is not 0): -219/74

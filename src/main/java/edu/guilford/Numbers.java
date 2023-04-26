@@ -1,5 +1,7 @@
 package edu.guilford;
 
+import java.util.Scanner;
+
 /**
  * Hello world!
  *
@@ -13,13 +15,22 @@ public class Numbers {
 
         // Rational rational = new Rational();
         // System.out.println(rational.toString());
-        Rational rational2 = new Rational(2, 4);
-        System.out.println("Here is the og object: " + rational2.toString() + "\n");
-        // rational.invert();
-        rational2.negate();
-        System.out.println("Here is the numerator sign flipped :" + rational2.getNumerator());
-        System.out.println("Here is the double for the rational number: " + rational2.toDouble() + "\n");
-        System.out.println("Here is the new rational object: " + rational2.toString());
+        Rational randomRational = new Rational(); // Random rational number
+        Scanner scan = new Scanner(System.in); 
+        System.out.println("Let us create a rational number and do things with it!");
+        System.out.println("Enter a numerator: ");
+        int numerator = scan.nextInt();
+        System.out.println("Enter a denominator (CANNOT BE 0): ");
+        int denominator = scan.nextInt();
+        Rational userRational = new Rational(numerator, denominator);
+
+
+        System.out.println("Here is our created rational object: " + userRational.toString() + "\n");
+        userRational.negate();
+        userRational.invert();
+        System.out.println(userRational.toDouble() + "\n");
+        System.out.println("TLDR Sum (if denominator is not 0): " + randomRational.add(userRational)); 
+        
 
     }
 }
