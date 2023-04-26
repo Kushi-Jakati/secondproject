@@ -1,7 +1,6 @@
 package edu.guilford;
 
 import java.util.Random;
-import java.util.Scanner;
 
 // Define a class called Rational.
 public class Rational { 
@@ -9,7 +8,6 @@ public class Rational {
     // and denominator.
     private int numerator;
     private int denominator;
-    Scanner scan = new Scanner(System.in);
 
     //Method to be invoked in constructors to ensure that syntax of rational number (with regard to signs)
     //is correct.
@@ -87,22 +85,26 @@ public class Rational {
     // This method simply modifies the existing attributes, so add a comment to
     // explain why its return type should be void. Add lines to main to test the new
     // method.
-    public void negate() {
+    //Method called negate with parameters expectedDenominator and expectedNumerator
+    //to be used for testing purposes.
+
+    public void negate(int expectedNumerator, int expectedDenominator) {
+        //Parameters are what user types into scanner for expected numerator and denominator for negation
         if (denominator == 0) {
             System.out.println("Your denominator cannot be 0 if we need to negate. Please try again with a denominator that is not 0.");
         } else if (denominator != 0) {
-            System.out.println("Negating the rational number " + toString() + "...");
-            // Prompt the user to enter the numerator and denominator of their expected sum
-            // of the two rational numbers
-            // in the follow format: x/y.
-            System.out.println("Please enter your expected numerator for negation: ");
-            // Store the user's input in an int variable
-            int expectedNumerator = scan.nextInt();
-            System.out.println("Please enter your expected denominator for negation: ");
-            // Store the user's input in an int variable
-            int expectedDenominator = scan.nextInt();
+
+            //Format user's expected rational number
+            if (expectedNumerator > 0 && expectedDenominator < 0) {
+                expectedNumerator = -expectedNumerator;
+                expectedDenominator = -expectedDenominator;
+            }
+            //Format user's expected rational number
             String expectedNegate = expectedNumerator + "/" + expectedDenominator;
             System.out.println("Expected Negated Rational Number: " + expectedNegate);
+
+            //System Calculations
+            System.out.println("Negating the rational number " + toString() + "...");
             numerator = -numerator;
             System.out.println("Negated Rational Number calculated from the system: " + toString() + "\n");
         }
@@ -117,27 +119,21 @@ public class Rational {
 
     // Write a method called invert that swaps the numerator and denominator. Add
     // lines to main to test the new method.
-    public void invert() {
+    public void invert(int expectedNumerator, int expectedDenominator) {
         if (denominator == 0) {
             System.out.println("Your denominator cannot be 0 if we need to invert. Please try again with a denominator that is not 0.");
         } else if (denominator != 0) {
-            System.out.println("Inverting the rational number " + toString() + "...");
-            System.out.println("Input: " + toString());
-            // Prompt the user to enter the numerator and denominator of their expected sum
-            // of the two rational numbers
-            // in the follow format: x/y.
-            System.out.println("Please enter your expected numerator: ");
-            // Store the user's input in an int variable
-            int expectedNumerator = scan.nextInt();
-            System.out.println("Please enter your expected denominator: ");
-            // Store the user's input in an int variable
-            int expectedDenominator = scan.nextInt();
+            
+            //Format user's expected rational number
             if (expectedNumerator > 0 && expectedDenominator < 0) {
                 expectedNumerator = -expectedNumerator;
                 expectedDenominator = -expectedDenominator;
             }
             String expectedInvert = expectedNumerator + "/" + expectedDenominator;
             System.out.println("Expected Invert: " + expectedInvert);
+
+            //System Calculations
+            System.out.println("Inverting the rational number " + toString() + "...");
             int invertPlaceholder = numerator;
             numerator = denominator;
             denominator = invertPlaceholder;
@@ -149,19 +145,16 @@ public class Rational {
     // Write an instance method called toDouble that converts the rational number to
     // a double (floating-point number) and returns the result. This method does not
     // modify the object. As always, test the new method.
-    public double toDouble() {
-        double expectedDouble; 
+    public double toDouble(double expectedDouble) {
         double doubleRationalNumber = 0.0;
         if (denominator ==0) {
             System.out.println("Your denominator cannot be 0 if we need to find the double. Please try again with a denominator that is not 0.");
         }else if (denominator !=0) {
-            System.out.println("Converting the rational number " + toString() + " to a double...");
-            System.out.println("Input: " + toString());
-            // Prompt the user to enter their expected double. 
-            System.out.println("Please enter your expected double: ");
-            // Store the user's input in an double variable
-            expectedDouble = scan.nextDouble();
+            //Format user's expected rational number
             System.out.println("Expected Double: " + expectedDouble);
+
+            //System Calculations
+            System.out.println("Converting the rational number " + toString() + " to a double...");
             doubleRationalNumber = (double) numerator / denominator;
             System.out.println("Double calculated from the system: ");
         }
@@ -169,32 +162,27 @@ public class Rational {
     }
 
     // Add method: adding two rational numbers together. 
-    public Rational add(Rational rational) {
+    public Rational add(Rational rational, int expectedNumerator, int expectedDenominator) {
         if (denominator == 0 || rational.denominator == 0) {
             System.out.println("Your denominator cannot be 0 if we need to find the sum. Please try again with a denominator that is not 0.");
         } else {
-            System.out.println("Calculating the sum of rational numbers (your rational number and a randomly generated one)...");
-            System.out.println("Input 1: " + rational.toString() + "\n" + "Input 2 (random): " + toString());
-            // Prompt the user to enter the numerator and denominator of their expected sum
-            // of the two rational numbers
-            // in the follow format: x/y.
-            System.out.println("Please enter your expected numerator: ");
-            // Store the user's input in an int variable
-            int expectedNumerator = scan.nextInt();
-            System.out.println("Please enter your expected denominator: ");
-            // Store the user's input in an int variable
-            int expectedDenominator = scan.nextInt();
-            // System.out.println("Please enter your expected sum of the two rational
-            // numbers in the following format: x/y.");
-            // //Store the user's input in a string variable
+            // Format user's expected rational number
+            if (expectedNumerator > 0 && expectedDenominator < 0) {
+                expectedNumerator = -expectedNumerator;
+                expectedDenominator = -expectedDenominator;
+            }
             String expectedSum = expectedNumerator + "/" + expectedDenominator;
             System.out.println("Expected Sum: " + expectedSum);
-
+            
+            //System Output
+            System.out.println("Calculating the sum of rational numbers (your rational number and a randomly generated one)...");
             // Create a new rational object that represents the sum of the two rational
             // numbers
             int newNumerator = (numerator * rational.getDenominator()) + (denominator * rational.getNumerator());
             int newDenominator = denominator * rational.getDenominator();
             Rational newRational = new Rational(newNumerator, newDenominator);
+            newRational.ensuringSigns();
+            //Final System Calculations Output
             System.out.println("The sum of " + toString() + " and " + rational.toString() + " from our program is "
                     + newRational.toString() + ".");
                     return newRational;
